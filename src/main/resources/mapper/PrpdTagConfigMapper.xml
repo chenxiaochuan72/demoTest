@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="generator.mapper.PrpdTagConfigMapper">
+
+    <resultMap id="BaseResultMap" type="generator.domain.PrpdTagConfig">
+            <result property="tagcode" column="TAGCODE" jdbcType="VARCHAR"/>
+            <result property="tagname" column="TAGNAME" jdbcType="VARCHAR"/>
+            <result property="riskcode" column="RISKCODE" jdbcType="VARCHAR"/>
+            <result property="productcode" column="PRODUCTCODE" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        TAGCODE,TAGNAME,RISKCODE,
+        PRODUCTCODE
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from PRPD_TAG_CONFIG
+        where 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from PRPD_TAG_CONFIG
+        where 
+    </delete>
+    <insert id="insert">
+        insert into PRPD_TAG_CONFIG
+        ( TAGCODE,TAGNAME,RISKCODE
+        ,PRODUCTCODE)
+        values (#{tagcode,jdbcType=VARCHAR},#{tagname,jdbcType=VARCHAR},#{riskcode,jdbcType=VARCHAR}
+        ,#{productcode,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective">
+        insert into PRPD_TAG_CONFIG
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="tagcode != null">TAGCODE,</if>
+                <if test="tagname != null">TAGNAME,</if>
+                <if test="riskcode != null">RISKCODE,</if>
+                <if test="productcode != null">PRODUCTCODE,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="tagcode != null">#{tagcode,jdbcType=VARCHAR},</if>
+                <if test="tagname != null">#{tagname,jdbcType=VARCHAR},</if>
+                <if test="riskcode != null">#{riskcode,jdbcType=VARCHAR},</if>
+                <if test="productcode != null">#{productcode,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="generator.domain.PrpdTagConfig">
+        update PRPD_TAG_CONFIG
+        <set>
+                <if test="tagcode != null">
+                    TAGCODE = #{tagcode,jdbcType=VARCHAR},
+                </if>
+                <if test="tagname != null">
+                    TAGNAME = #{tagname,jdbcType=VARCHAR},
+                </if>
+                <if test="riskcode != null">
+                    RISKCODE = #{riskcode,jdbcType=VARCHAR},
+                </if>
+                <if test="productcode != null">
+                    PRODUCTCODE = #{productcode,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where  
+    </update>
+    <update id="updateByPrimaryKey" parameterType="generator.domain.PrpdTagConfig">
+        update PRPD_TAG_CONFIG
+        set 
+            TAGCODE =  #{tagcode,jdbcType=VARCHAR},
+            TAGNAME =  #{tagname,jdbcType=VARCHAR},
+            RISKCODE =  #{riskcode,jdbcType=VARCHAR},
+            PRODUCTCODE =  #{productcode,jdbcType=VARCHAR}
+        where  
+    </update>
+</mapper>
